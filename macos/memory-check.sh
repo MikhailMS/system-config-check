@@ -43,17 +43,6 @@ function get_memory_available() {
   fi
 }
 
-function convert_gb_to_mb() {
-  _mem=$1
-  if [ $(echo $_mem | grep G) ]; then
-    _mem=$(echo $_mem | tr -dc '0-9')
-    let _mem=$_mem*1000
-  else
-    _mem=$(echo $_mem | tr -dc '0-9')
-  fi
-  echo $_mem
-}
-
 function get_memory_all() {
   if [ type -p free ]; then
     free -h

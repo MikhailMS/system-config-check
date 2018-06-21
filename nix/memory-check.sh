@@ -4,8 +4,9 @@ source ./utils/try-catch.sh
 source ./utils/utils.sh
 
 function get_memory_total() {
-  if type -p free ; then
-    free -h |awk '/^Mem:/{print $2}'
+  if type -p free >/dev/null 2>&1; then
+    _total=$(free -h | awk '/^Mem:/{print $2}')
+    echo $(convert_gb_to_mb $_total)
   elif [ -f '/proc/meminfo' ]
   then
     _total=$(grep MemTotal /proc/meminfo | awk '{print $2}')
@@ -14,8 +15,9 @@ function get_memory_total() {
 }
 
 function get_memory_available() {
-  if type -p free ; then
-    free -h | awk '/^Mem:/{print $7}'
+  if type -p free >/dev/null 2>&1; then
+    _available=$(free -h | awk '/^Mem:/{print $7}')
+    echo $(convert_gb_to_mb $_available)
   elif [ -f '/proc/meminfo' ]
   then
     _available=$(grep MemAvail /proc/meminfo | awk '{print $2}')

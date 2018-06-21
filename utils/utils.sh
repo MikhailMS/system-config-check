@@ -25,3 +25,17 @@ function mask2cdr () {
   echo $(( $2 + (${#x}/4) ))
 }
 
+function calculation() {
+  awk "BEGIN { print $*}";
+}
+
+function convert_gb_to_mb() {
+  _mem=$1
+  if [ $(echo $_mem | grep G) ]; then
+    _mem=$(echo $_mem | grep -Eo '[+-]?[0-9]+([.][0-9]+)?')
+    _mem=$(calculation $_mem*1000)
+  else
+    _mem=$(echo $_mem | grep -Eo '[+-]?[0-9]+([.][0-9]+)?')
+  fi
+  echo $_mem
+}
