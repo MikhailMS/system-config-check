@@ -69,11 +69,13 @@ function gather_network_configuration() {
         echo "      MAC-address:  $macaddress"
         echo "    Network Speed:  $networkspeed"
         echo "     Link quality:  $quality"
-        echo " "
+        echo "  <<------"
+        echo ""
       fi
     fi
   done
 
+  echo "--------------"
   echo "Inactive Networks:"
   echo "--------------"
 
