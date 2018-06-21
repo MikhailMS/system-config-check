@@ -25,6 +25,6 @@
   - [ ] MacOS
   - [ ] Unix
 - [ ] Network configuration for Unix
-- [ ] Add inactive interfaces into Network configuration on MacOS
+- [x] Add inactive interfaces into Network configuration on MacOS
 
 ## Tested on MacOS 10.13 only

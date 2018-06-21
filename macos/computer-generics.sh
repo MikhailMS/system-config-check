@@ -3,50 +3,50 @@
 source ./utils/utils.sh
 
 function computer_generics() {
-  kernel=$(get_kernel)
-  kernel_version=$(get_kernel_version)
-  kernel_release=$(get_kernel_release)
+  _kernel=$(get_kernel)
+  _kernel_version=$(get_kernel_version)
+  _kernel_release=$(get_kernel_release)
 
   # Get computer name
-  computername=$(scutil --get ComputerName)
+  _computername=$(scutil --get ComputerName)
 
   # Get serial number
-  sSerialNumber=$(system_profiler SPHardwareDataType |grep "Serial Number (system)" |awk '{print $4}'  | cut -d/ -f1)
+  _serialnumber=$(system_profiler SPHardwareDataType |grep "Serial Number (system)" |awk '{print $4}'  | cut -d/ -f1)
 
   # Get operating system name and version
-  OSvers1=$( sw_vers -productVersion | cut -d. -f1 )
-  OSvers2=$( sw_vers -productVersion | cut -d. -f2 )
-  OSvers3=$( sw_vers -productVersion | cut -d. -f3 )
-  case $OSvers2 in
+  _osvers1=$( sw_vers -productVersion | cut -d. -f1 )
+  _osvers2=$( sw_vers -productVersion | cut -d. -f2 )
+  _osvers3=$( sw_vers -productVersion | cut -d. -f3 )
+  case $_osvers2 in
     8)
-      OSName="Mountain Lion"
+      _osname="Mountain Lion"
     ;;
     9)
-      OSName="Mavericks"
+      _osname="Mavericks"
     ;;
     10)
-      OSName="Yosemite"
+      _osname="Yosemite"
     ;;
     11)
-      OSName="El Capitan"
+      _osname="El Capitan"
     ;;
     12)
-      OSName="Sierra"
+      _osname="Sierra"
     ;;
     13)
-      OSName="High Sierra"
+      _osname="High Sierra"
     ;;
     default)
-      OSName="Unknown"
+      _osname="Unknown"
     ;;
   esac
 
-  echo "$computername"
+  echo "$_computername"
   echo "--------------"
-  echo "      Computer OS:  Mac OS X - $OSName $OSvers1.$OSvers2.$OSvers3"
-  echo "  Computer Kernel:  ${kernel_version} - ${kernel_release}"  
-  echo "    Computer Name:  $computername"
+  echo "      Computer OS:  Mac OS X - $_osname $_osvers1.$_osvers2.$_osvers3"
+  echo "  Computer Kernel:  ${_kernel_version} - ${_kernel_release}"  
+  echo "    Computer Name:  $_computername"
   echo "Current User Name:  $(whoami)"
-  echo "    Serial Number:  $sSerialNumber"
+  echo "    Serial Number:  $_serialnumber"
   echo ""
 }

@@ -71,11 +71,11 @@ function get_disc_stats() {
 }
 
 function gather_memory_configuration() {
-  memTotal=$(get_memory_total)
-  memAvailable=$(get_memory_available)
-  let usage=(memTotal - memAvailable)*100/memTotal
+  _memTotal=$(get_memory_total)
+  _memAvailable=$(get_memory_available)
+  let _usage=(_memTotal - _memAvailable)*100/_memTotal
 
-  echo "Physical Memory: Total = ${memTotal} Mb, Available = ${memAvailable} Mb, usage = ${usage} %"
+  echo "Physical Memory: Total = ${_memTotal} Mb, Available = ${_memAvailable} Mb, usage = ${_usage} %"
   echo "Disc Stats:"
   echo "  ------>>"
   get_disc_stats
