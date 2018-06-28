@@ -29,6 +29,7 @@ if [ $(get_kernel) = 'Darwin' ]; then
 else
   source nix/cpu-check.sh
   source nix/memory-check.sh
+  source nix/network-check.sh
 
   echo "CPU Configuration"
   echo "--------------"
@@ -38,5 +39,10 @@ else
   echo "Memory Configuration"
   echo "--------------"
   echo "$(gather_memory_configuration)"
+  echo "--------------"
+  echo ""
+  echo "Network Configuration"
+  echo "--------------"
+  echo "$(gather_network_configuration)"
   echo "--------------"
 fi
