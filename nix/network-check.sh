@@ -16,7 +16,7 @@ function gather_network_configuration() {
     for interface in $activeinterlist; do
       if type -p nmcli >/dev/null 2>&1; then
         type=$(nmcli device show $interface | grep 'TYPE' | awk '{ print $2 }')
-        echo "  $type ($interface)"
+        echo "  ${type^} ($interface)"
         echo "  ------>>"
 
         ip4cidr=$(nmcli device show $interface | grep 'IP4.ADDRESS' | awk '{ print $2 }')
