@@ -32,7 +32,7 @@ function gather_network_configuration() {
         echo "       Gateway IP:  $ip4gateway"
         # echo "           Router:  $router"
         echo "          IP CIDR:  $ip4cidr"
-        echo "    IP  6 Address:  $ip6addr"
+        echo "     IP 6 Address:  $ip6addr"
 
         if [[ -z $dnsip ]]; then
           echo "       DNS Server:  Unknown"
@@ -57,7 +57,7 @@ function gather_network_configuration() {
         # echo "       Gateway IP:  $ip4gateway"
         # echo "           Router:  $router"
         # echo "          IP CIDR:  $ip4cidr"
-        # echo "    IP  6 Address:  $ip6addr"
+        # echo "    IP 6 Address:  $ip6addr"
 
         # if [[ -z $dnsip ]]; then
         #   echo "       DNS Server:  Unknown"
