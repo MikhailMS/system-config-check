@@ -22,7 +22,7 @@ function gather_network_configuration() {
         ip4cidr=$(nmcli device show $interface | grep 'IP4.ADDRESS' | awk '{ print $2 }')
         ip4addr=${ip4cidr::-3}
         ip4gateway=$(nmcli device show $interface | grep 'IP4.GATEWAY' | awk '{ print $2 }')
-        netmask=$(echo $ip4info | awk '{ print $4 }')
+        netmask=$(ifconfig $interface | grep -E '(^|\s)inet($|\s)' | awk '{ print $4 }')
         dnsip=$(nmcli device show $interface | grep 'IP4.DNS' | awk '{ print $2 }')
         ip6addr=$(nmcli device show $interface | grep 'IP6.ADDRESS' | awk '{ print $2 }')
         macaddr=$(nmcli device show $interface | grep 'GENERAL.HWADDR' | awk '{ print $2 }')
