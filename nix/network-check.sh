@@ -21,9 +21,6 @@ function gather_network_configuration() {
     for interface in $activeinterlist; do
       if type -p nmcli >/dev/null 2>&1; then
         type=$(nmcli device show $interface | grep 'TYPE' | awk '{ print $2 }')
-        echo "  ${type^} ($interface)"
-        echo "  ------>>"
-
         ip4cidr=$(nmcli device show $interface | grep 'IP4.ADDRESS' | awk '{ print $2 }')
         ip4addr=${ip4cidr::-3}
         ip4gateway=$(nmcli device show $interface | grep 'IP4.GATEWAY' | awk '{ print $2 }')
@@ -38,6 +35,8 @@ function gather_network_configuration() {
           networkspeed='Unknown'
         fi
 
+        echo "  ${type^} ($interface)"
+        echo "  ------>>"
         echo "       IP Address:  $ip4addr"
         echo "      Subnet Mask:  $netmask"
         echo "Router/Gateway IP:  $ip4gateway"
@@ -54,6 +53,7 @@ function gather_network_configuration() {
         echo "    Network Speed:  $networkspeed"
         echo "  <<------"
         echo ""
+
       else
         ip4info=$(ifconfig $interface | grep -P '(^|\s)\Kinet(?=\s|$)')
         ip6info=$(ifconfig $interface | grep -P '(^|\s)\Kinet6(?=\s|$)')
@@ -82,10 +82,10 @@ function gather_network_configuration() {
       fi
     done
 
-    echo ""
     echo "--------------"
     echo "Inactive Networks:"
     echo "--------------"
+
     for interface in $inactiveinterlist; do
       if type -p nmcli >/dev/null 2>&1; then
         type=$(nmcli device show $interface | grep 'TYPE' | awk '{ print $2 }')
@@ -107,7 +107,6 @@ function gather_network_configuration() {
         echo "      MAC-address:  $macaddr"
         echo "  <<------" 
       fi
-
     done
   fi
 }

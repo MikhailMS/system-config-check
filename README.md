@@ -15,7 +15,7 @@
   - [ ] Computer generic info, i.e name, kernel version, OS and etc
   - [x] CPU stats (simple for the time being)
   - [x] Memory and disc space (simple for the time being)
-  - [ ] Network configuration
+  - [x] Network configuration
 
 ## To Do List:
 - [ ] Find a way to gain more information about CPU
@@ -24,9 +24,9 @@
 - [ ] Find a way to better present memory stats
   - [ ] MacOS
   - [ ] Unix
-- [ ] Network configuration for Unix
+- [x] Network configuration for Unix
   - [x] Shows Active network interfaces
-  - [ ] Shows Inactive network interfaces
+  - [x] Shows Inactive network interfaces
 - [x] Add inactive interfaces into Network configuration on MacOS
 
 ## Tested on MacOS 10.13 & Centos 7 only
