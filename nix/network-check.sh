@@ -86,7 +86,7 @@ function gather_network_configuration() {
     echo "--------------"
     echo "Inactive Networks:"
     echo "--------------"
-    for interface in inactiveinterlist; do
+    for interface in $inactiveinterlist; do
       if type -p nmcli >/dev/null 2>&1; then
         type=$(nmcli device show $interface | grep 'TYPE' | awk '{ print $2 }')
         macaddr=$(nmcli device show $interface | grep 'GENERAL.HWADDR' | awk '{ print $2 }')
