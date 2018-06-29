@@ -53,7 +53,7 @@ function gather_network_configuration() {
 
         echo "       IP Address:  $ipaddress"
         echo "      Subnet Mask:  $netmask"
-        echo "           Router:  $router"
+        echo "   Router/Gateway:  $router"
         echo "          IP CIDR:  $ipaddress/$(mask2cdr $netmask)"
 
         if [[ -z $dnsserver ]]; then
